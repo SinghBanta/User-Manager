@@ -14,7 +14,6 @@ const Home = () => {
       const res = await fetch(`https://reqres.in/api/users?page=${pageNumber}`);
       const data = await res.json();
       setAlldata(data.data);
-      console.log(pageNumber, "ka data hai");
     }
 
     if (localStorage.getItem("token") === null) {
@@ -28,7 +27,7 @@ const Home = () => {
     <>
       <Navbar />
 
-      <main className="flex flex-col gap-2 max-w-lg mx-auto">
+      <main className="flex flex-col gap-2 max-w-lg mx-auto px-2">
         {alldata.map((userdata, index) => (
           <UserCard
             key={index}

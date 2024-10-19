@@ -37,7 +37,7 @@ function Login() {
 
 
   return (
-    <div className="flex items-center justify-center h-screen max-w-md mx-auto">
+    <div className="flex items-center justify-center h-screen max-w-md mx-auto px-2">
     <form className="flex w-full flex-col gap-4 border-2 p-5 bg-gradient-to-b from-orange-100 to-sky-200 rounded-xl">
       <h1 className="text-2xl font-bold text-center">User Manager</h1> 
       <div>
