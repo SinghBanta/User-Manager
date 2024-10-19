@@ -1,14 +1,20 @@
 /* eslint-disable react/prop-types */
 
 import { Button, Label, Modal, TextInput } from "flowbite-react";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export function EditDialog({userdata, setAlldata, alldata}) {
   const [openModal, setOpenModal] = useState(false);
   const emailInputRef = useRef(null);
-  const [email, setEmail] = useState(userdata.email);
-  const [first_name, setFirst_name] = useState(userdata.first_name);
-  const [last_name, setLast_name] = useState(userdata.last_name);
+  const [email, setEmail] = useState();
+  const [first_name, setFirst_name] = useState();
+  const [last_name, setLast_name] = useState();
+
+  useEffect(() => {
+    setEmail(userdata.email);
+    setFirst_name(userdata.first_name);
+    setLast_name(userdata.last_name);
+  }, [userdata]);
 
   function handleUpdate() {
     const newArray = alldata.map(item => {
@@ -33,16 +39,20 @@ export function EditDialog({userdata, setAlldata, alldata}) {
           <div className="space-y-6">
             <h3 className="text-xl font-medium text-gray-900 dark:text-white">Edit User Details</h3>
             <div>
+
               <img
               src={userdata.avatar}
               alt="profile_photo"
               className="h-16 rounded-full bordre-3"
               />
+
               <div className="mb-2 mt-5 block">
                 <Label htmlFor="email" value="Your email" />
               </div>
+
               <TextInput id="email" ref={emailInputRef} placeholder="...@gmail.com" value={email} onChange={(e)=>setEmail(e.target.value)} required />
             </div>
+            
             <div>
               <div className="mb-2 block">
                 <Label htmlFor="first_name" value="First Name" />
